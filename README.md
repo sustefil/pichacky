@@ -2,4 +2,4 @@
 
 Welcome to Píchačky, an app to monitor your working schedule!
 
-![Píchačky](./pichacky.jpg)
+<img src="pichacky.jpg" width="440">
