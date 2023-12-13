@@ -1,11 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
-
 
 class User(models.Model):
-    username = models.CharField(max_length=32, primary_key=True)
+    username = models.CharField(max_length=32, unique=True)
     password = models.CharField(max_length=32)  # TODO: Of course dude, this needs to be changed after testing
 
     name = models.CharField(max_length=32)
@@ -18,7 +16,10 @@ class User(models.Model):
 class Place(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
-    default_lunchtime = models.SmallIntegerField(default=30)  # minutes
+    lunchtime = models.SmallIntegerField(default=30)  # minutes
+
+    class Meta:
+        unique_together = ('user', 'name')
 
     def __str__(self):
         return f'{self.user}-{self.name}'
@@ -31,7 +32,7 @@ class Action(models.Model):
 
     place = models.ForeignKey('Place', on_delete=models.CASCADE)
     type = models.CharField(max_length=3, choices=Type.choices)
-    date = models.DateField()
+    date = models.DateField()  # separated date/time so we can have only one arrival/leave per day
     time = models.TimeField()
 
     class Meta:
