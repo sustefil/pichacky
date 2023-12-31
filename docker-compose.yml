@@ -1,13 +1,24 @@
-version: '3'
-
 services:
-  web:
+  base:
+    image: pichacky-base
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
+
+  web:
+    image: pichacky-base
     ports:
       - "8000:8000"
     volumes:
       - .:/app
+    env_file:
+      - .env
     working_dir: /app
     command: python manage.py runserver 0.0.0.0:8000
+
+  tests:
+    image: pichacky-base
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python -m unittest -v
