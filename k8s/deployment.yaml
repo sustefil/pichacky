@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pichacky-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pichacky
+  template:
+    metadata:
+      labels:
+        app: pichacky
+    spec:
+      containers:
+      - name: pichacky-web
+        image: pichacky-k8s:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        workingDir: /app
+        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
