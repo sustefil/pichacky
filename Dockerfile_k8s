@@ -1,6 +1,6 @@
 FROM python:3.11-slim-bookworm
 
-RUN apt update && apt install -y default-libmysqlclient-dev gcc g++ make sqlite3
+RUN apt update && apt install -y default-libmysqlclient-dev gcc g++ make sqlite3 curl
 
 WORKDIR /app
 COPY requirements.txt .

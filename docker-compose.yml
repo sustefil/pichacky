@@ -3,7 +3,7 @@ services:
     image: pichacky-base
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_local
 
   web:
     image: pichacky-base

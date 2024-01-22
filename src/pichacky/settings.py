@@ -14,7 +14,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_DIR = Path(__file__).resolve().parent.parent.parent
+
+DB_DIR_DEFAULT = Path(__file__).resolve().parent.parent.parent
+DB_DIR = os.getenv('DB_DIR', DB_DIR_DEFAULT)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -26,7 +28,7 @@ SECRET_KEY = 'NECUM'
 # DEBUG = True if os.getenv('DEBUG', 'false').lower() in ('1', 'true') else False
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 TIME_ZONE = 'Europe/Prague'
 
@@ -132,3 +134,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": "/var/log/pichacky_error.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "ERROR",
+            "propagate": True,
+        },
+    },
+}
