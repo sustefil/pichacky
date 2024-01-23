@@ -16,7 +16,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DB_DIR_DEFAULT = Path(__file__).resolve().parent.parent.parent
-DB_DIR = os.getenv('DB_DIR', DB_DIR_DEFAULT)
+if os.getenv('DB_DIR', False):
+    DB_DIR = Path(os.getenv('DB_DIR', False))
+else:
+    DB_DIR = DB_DIR_DEFAULT
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
