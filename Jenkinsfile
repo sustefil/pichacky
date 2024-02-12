@@ -10,13 +10,13 @@ pipeline {
                 '''
             }
         }
+        stage('Test random image') {
+            agent {
+                docker { image 'node:20.11.0-alpine3.19' }
+            }
 
-        stage('Deploy') {
-            agent any
             steps {
-                sh '''
-                docker-compose down && docker-compose up -d
-                '''
+                sh 'node --version'
             }
         }
     }
