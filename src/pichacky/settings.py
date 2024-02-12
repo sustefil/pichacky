@@ -137,7 +137,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-DISABLE_COLLECTSTATIC = 1
+STATIC_ROOT = '/var/www/pichacky/static_root'
+
 
 # LOGGING = {
 #     "version": 1,
