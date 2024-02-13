@@ -2,15 +2,17 @@
 node {
   checkout scm
   def myImage = docker.build('pichacky:by_jenkins')
-  stage('Test image')
-  myImage.inside {
-    sh 'python -m unittest'
+  stage('Test image') {
+    myImage.inside {
+      sh 'python -m unittest'
+    }
   }
 
-  stage('Publish image to DO')
-  docker.withRegistry('https://registry.digitalocean.com/my-container-hub') {
-        myImage.push()
+  stage('Publish image to DO') {
+    docker.withRegistry('https://registry.digitalocean.com/my-container-hub', 'do-registry-api-key') {
+      myImage.push()
     }
+  }
 }
 
 // pipeline {
