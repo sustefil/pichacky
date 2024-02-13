@@ -1,7 +1,7 @@
 
 node {
   checkout scm
-  def myImage = docker.build 'pichacky:${env.BUILD_ID}'
+  def myImage = docker.build 'pichacky:by_jenkins'
   myImage.inside {
     sh 'python -m unittest'
   }
