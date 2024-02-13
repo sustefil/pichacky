@@ -9,7 +9,7 @@ node {
   }
 
   stage('Publish image to DO') {
-    docker.withRegistry('https://registry.digitalocean.com/my-container-hub', 'do-registry-api-key') {
+    docker.withRegistry('https://registry.digitalocean.com/my-container-hub', 'do-registry-creds') {
       myImage.push()
     }
   }
