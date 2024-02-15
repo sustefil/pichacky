@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def index(request, extra_msg=None):
-    return HttpResponse(f"Hello, world. You're at the Pichacky index. {extra_msg}")
+    return HttpResponse(f"CI TEST. Hello, world. You're at the Pichacky index. {extra_msg}")
 
 
 def err_test(request, extra_msg=None):
