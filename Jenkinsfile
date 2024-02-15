@@ -15,7 +15,7 @@ node {
   }
 
   stage('Redeploy Kubernetes') {
-    agent jenkins-agent-node
+    agent { label 'jenkins-agent-node' }
     steps {
         sh '''
         kubectl version
