@@ -28,8 +28,8 @@ else:
 SECRET_KEY = 'NECUM'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True if os.getenv('DEBUG', 'false').lower() in ('1', 'true') else False
-DEBUG = True
+DEBUG = True if os.getenv('DEBUG', 'false').lower() in ('1', 'true') else False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
