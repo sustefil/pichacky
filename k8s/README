@@ -1,0 +1,5 @@
+deployment.yaml jsem pouzil v minikube
+
+pro DigitalOcean jsem vytvoril statefulset.yaml (doporuceno DO), navod:
+https://docs.digitalocean.com/products/kubernetes/how-to/add-volumes/
+
