@@ -1,0 +1,3 @@
+This is a Dockerfile, that takes the official jenkins/agent image (with java and stuff),
+and also installs docker client inside, this is needed when one wants to provision docker agents dynamically
+and also use docker inside these containers
